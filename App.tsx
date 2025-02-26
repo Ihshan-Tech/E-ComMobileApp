@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './Screens/HomeScreen';
+import AddToCard from './Screens/AddToCard';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Footer from './Screens/Footer';
+import Checkout from './Screens/CheckoutCard';
 
-export default function App() {
+const Drawer = createDrawerNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator
+        drawerContent={(props) => <Sidebar {...props} />}
+        screenOptions={{
+          header: (props) => <Header {...props} />, // Add custom header
+        }}
+      >
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="AddToCard" component={AddToCard} />
+        <Drawer.Screen name="Checkout" component={Checkout} />
+      </Drawer.Navigator>
+      <Footer />
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
