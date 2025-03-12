@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Modal, FlatList } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import FeedBack from './FeedBack';
+
 interface Product {
   id: number;
   name: string;
@@ -130,7 +130,6 @@ const HomeScreen = () => {
           </View>
         </View>
       </Modal>
-      <FeedBack/>
     </ScrollView>
   );
 };
